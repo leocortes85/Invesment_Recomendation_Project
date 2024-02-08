@@ -18,6 +18,25 @@
   <img src="Images/ARCOL.gif" alt="Logo" width="300" height="300">
 </p>
 
+## Project Description
+A client has hired the services of ARCOL Data Solutions and has requested that a complete analysis be carried out on the tourism business market in the United States and to create an App that presents a recommendation model with the purpose that interested potential investors have valuable information that allows them to make decisions about investing or not, according to their needs.
+To do this, it provides data from the Yelp and Google Maps platforms, through a folder in the Google Drive cloud that it shares with the company.
+
+## Project Structure
+
+| Folder/File              | Description                                                                                  |
+| ------------------------ | -------------------------------------------------------------------------------------------- |
+| **/data**                | Folder that stores datasets and files used by the Analysis and DAshboard.                              |
+| **/Preliminary Work**    | Folder containing Jupyter notebooks used for Preliminary ETL and Preliminary EDA process |
+| **/Images**              | Folder containing relevant and illustrative images for the analysis project. |
+| **/Docs**              | Folder containing LaTex and PDF files (in English and Spanish) with the documentation carried out during each stage of the project, as well as a report with the final analysis and the project conclusions report.|
+| **gitignore**            | File specifying folders and files to be ignored by version control (git).                      |
+| **LICENSE**              | MIT LICENSE - File specifying the terms under which the source code is shared.                 |
+| **README.md**            | Main project documentation in English.                                                         |
+| **README_ESP.md**        | Main project documentation in Spanish.                                                         |
+
+
+
 ## Preliminay Work
 
 As preliminary work, business data that exists on Google Maps and Yelp is loaded.
