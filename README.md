@@ -36,6 +36,15 @@ To do this, it provides data from the Yelp and Google Maps platforms, through a 
 | **README_ESP.md**        | Main project documentation in Spanish.                                                         |
 
 
+## Authors
+
+# Invesment_Recomendation_Project
+<p align="center">
+  <img src="Images/Team.png">
+</p>
+
+
+
 
 ## Preliminay Work
 
