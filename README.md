@@ -48,7 +48,7 @@ To do this, it provides data from the Yelp and Google Maps platforms, through a 
 | **Leonardo Cortés**      | Project Manager (PM) and Data Scientist   |[leocortes85](https://github.com/leocortes85/)  |[Leonardo Cortés Zambrano](https://www.linkedin.com/in/leonardo-cort%C3%A9s-zambrano/)
 | **Marcelo Atencio**      | Task Manager and Data Engineer            |[MarceloAtencio](https://github.com/MarceloAtencio/) |[Marcelo Atencio](https://www.linkedin.com/in/marcelo-atencio/)
 | **Federico López**       | Data Analyst and Data Story Teller.       |[alopezfederico](https://github.com/alopezfederico/) |[Federico Antonio López](https://www.linkedin.com/in/federico-a-lopez/)  |
-| **/Andrés Ruiz**         | Data Engineer and ML Engineer             |[a1ternocles](https://github.com/alopezfederico/) |[Andrés Ruiz](https://www.linkedin.com/in/andresruiz94/) |
+| **Andrés Ruiz**         | Data Engineer and ML Engineer             |[a1ternocles](https://github.com/alopezfederico/) |[Andrés Ruiz](https://www.linkedin.com/in/andresruiz94/) |
 
 ## Preliminay Work
 
