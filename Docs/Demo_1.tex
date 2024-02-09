@@ -25,13 +25,13 @@
 \maketitle
 
 \begin{abstract}
-El siguiente documento presenta el informe de la primer etapa del proyecto final a presentar en el Boot Camp de Data Science de "Soy Henry". En este proyecto se plantea un esquema de trabajo desde la ingesta de datos crudos proporcionados por el cliente hasta el desarrollo de un producto final entregable.
+El siguiente documento presenta el informe de la primer etapa del proyecto final a presentar en el Boot Camp de Data Science de `Soy Henry'. En este proyecto se plantea un esquema de trabajo desde la ingesta de datos crudos proporcionados por el cliente hasta el desarrollo de un producto final entregable.
 \end{abstract}
 
 \tableofcontents
 
 \section{Introducción}
-ARCOL Data Solutions es una empresa conformada por un equipo de cuatro apasionados expertos en el campo de 'Data' motivados por la constante curiosidad y la dedicación al análisis.  Actualmente ARCOL Data Solutions asume el reto de preparar, analizar y modelar una cantidad de datos proporcionados por el cliente con el fin de entregar un análisis exhaustivo junto con un modelo de recomendación que permita al usuario tomar decisiones de inversión en el mercado real del sector turístico en Estados Unidos.  
+ARCOL Data Solutions es una empresa conformada por un equipo de cuatro apasionados expertos en el campo de `Data' motivados por la constante curiosidad y la dedicación al análisis.  Actualmente ARCOL Data Solutions asume el reto de preparar, analizar y modelar una cantidad de datos proporcionados por el cliente con el fin de entregar un análisis exhaustivo junto con un modelo de recomendación que permita al usuario tomar decisiones de inversión en el mercado real del sector turístico en Estados Unidos.  
 Como misión se proponen abordar las preguntas que más inquietan a los usuarios al transformar datos en inteligencia. 
 Para el actual proyecto nuestra principal fuente de información son los Datasets nativos proporcionados por el sitio YELP. Estos conjuntos de datos contienen recomendaciones y calificaciones generadas por usuarios durante sus visitas a diversos lugares en todo Estados Unidos, abarcando desde restaurantes hasta hoteles. Esta información nos ofrece una visión única y detallada de las experiencias de los usuarios en diferentes establecimientos.
 
@@ -252,13 +252,14 @@ En el siguiente link se accede al repositorio del proyecto en GitHub:
 
 \section{Planificación del Proyecto}
 
-Mediante el uso de un diagrama de Gantt detallamos todas las tareas a ejecutar para alcanzar el objetivo, duración de las mismas y su dependencias.
+Mediante el uso de un diagrama de Gantt, utilizando el sofware de Task Management `Jira', 
+ detallamos todas las tareas a ejecutar para alcanzar el objetivo, duración de las mismas y su dependencias.
 
 
 
 \section{Trabajo preliminar}
 \subsection{Global Pre ETL (Extract, Transform and Load)}
-En la fase inicial del proyecto, establecimos un Data Lake en Microsoft Fabric y cargamos directamente los conjuntos de datos de Google Maps y Yelp desde un enlace de Google Drive. Desarrollamos un código automatizado para leer archivos en formato .json y .pickle, convirtiéndolos en .parquet para facilitar la manipulación posterior. Destacamos la creación del archivo "utils.py" que contiene funciones esenciales, accedidas desde el código principal.
+En la fase inicial del proyecto, establecimos un Data Lake en Microsoft Fabric y cargamos directamente los conjuntos de datos de Google Maps y Yelp desde un enlace de Google Drive. Desarrollamos un código automatizado para leer archivos en formato .json y .pickle, convirtiéndolos en .parquet para facilitar la manipulación posterior. Destacamos la creación del archivo `Utils.py' que contiene funciones esenciales, accedidas desde el código principal.
 
 Optamos por almacenar los archivos en formato parquet desde el principio para reducir el consumo de memoria y agilizar la manipulación de datos en etapas posteriores. Esto se logra gracias a las ventajas de eficiencia y rendimiento que ofrece el formato parquet en comparación con otros. La modularidad del código y la accesibilidad a funciones clave desde "utils.py" contribuyen a la organización y mantenimiento efectivos del proyecto.
 
