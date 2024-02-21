@@ -59,7 +59,7 @@ Additionally, a preliminary analysis of the quality of the data contained in the
 ## Technology FLow
 
 <p align="center">
-  <img src="Images/Tech_dlow.gif">
+  <img src="Images/Tech_flow.gif">
 </p>
 
 ## Database Scheme
