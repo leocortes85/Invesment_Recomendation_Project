@@ -56,4 +56,15 @@ As preliminary work, business data that exists on Google Maps and Yelp is loaded
 In order to optimize the size of the files and the use of resources when working with the data, a change to parquet format is made, optimizing the use of resources by 69%.
 Additionally, a preliminary analysis of the quality of the data contained in the files is carried out.
 
+## Technology FLow
 
+<p align="center">
+  <img src="Images/Tech_dlow.gif">
+</p>
+
+## Database Scheme
+The Data Warehouse has a snowflake schema where the Business fact table is used as the center, the other tables provide more information to the analyst when making queries, but only if it is necessary. Thus, the database is as follows:
+
+<p align="center">
+  <img src="Images/DER.png">
+</p>
