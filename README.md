@@ -68,3 +68,24 @@ The Data Warehouse has a snowflake schema where the Business fact table is used 
 <p align="center">
   <img src="Images/DER.png">
 </p>
+
+
+
+## Transformations
+
+- Extract, transform and load (ETL) were performed using the Pandas library automating a data loading scheme from the client-provided folder.
+- Strategies were applied to handle nested data and irrelevant or highly null columns were eliminated.
+- An incremental load of information required to complement the tables was carried out, based on extraction models with external APIs, web-scrapping and function formulation
+
+## Exploratory Data Analysis (EDA)
+
+- EDA was conducted on transformed datasets using Pandas, Matplotlib, and Seaborn.
+- Relevant variables for creating the recommendation and relational models were identified.
+
+## Dimensional Tables and Relational Model
+
+- With the variables selected during the analysis, a relational model was created with auxiliary dimensional tables, tow facts tables and a main table, in order to organize the information and easily access it.
+- The relational model was automatized to work with in Data Warehouse
+
+## Pipeline
+Am autimatized pipline of data was created and executed to run the projecto from data base provided by costumer to Data Warehouse
