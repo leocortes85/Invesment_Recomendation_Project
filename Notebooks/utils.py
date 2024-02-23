@@ -403,44 +403,69 @@ def replace_all_nulls(df):
             
     return df
 
-#Function to merge Google Maps Data
-def merge_state_dataframes(state_directory, metadata_sites):
-    '''
-    Function to merge metadata and state dataframes.
+#Function to conctact Google Maps States Data
+def clean_states_and_concat(folder_path):
 
-    Parameters:
-    - state_directory: Path to the directory containing state-specific parquet files.
-    - metadata_sites: DataFrame containing metadata from sites.
+    """
+This function takes a folder_path as input, which represents the directory containing multiple parquet files, each corresponding to a state's data.
 
-    Returns:
-    - Merged DataFrame combining metadata and state-specific dataframes.
-    '''
+For each parquet file in the specified folder, the function reads the data into a DataFrame, extracts the state name from the file name, and adds it as a new column named 'state' to the DataFrame.
 
-    # List to store state-specific DataFrames
-    state_dataframe_list = []
+After processing all the parquet files, it concatenates all the DataFrames along the rows axis (axis=0) to create a single DataFrame containing data from all states. Finally, it returns this concatenated DataFrame.
+"""
+   
+    concat_list = []
 
-    # Loop through state-specific parquet files in the given directory
-    for state_file in os.listdir(state_directory):
-        state_file_path = os.path.join(state_directory, state_file)
+    for parquet in os.listdir(folder_path):
+        aux_path = os.path.join(folder_path, parquet)
+        df = pd.read_parquet(aux_path)
+       # Agregar el nombre del estado como nueva columna
+        state_name = parquet.split('.')[0]
+        df['state'] = state_name
 
-        # Read each state-specific parquet file into a DataFrame
-        state_dataframe = pd.read_parquet(state_file_path)
+        concat_list.append(df)
+    
+    dataframe_object = pd.concat(concat_list, axis=0, ignore_index=True)
+    return dataframe_object  
 
-        # Extract state name from file path and add it as a new column 'state'
-        state_name = state_file_path.split('/')[-1].split('.')[0]
-        state_dataframe['state'] = state_name
 
-        # Append the state-specific DataFrame to the list
-        state_dataframe_list.append(state_dataframe)
+def clean_sites(file_path, keywords):
 
-    # Concatenate all state-specific DataFrames along rows
-    total_state_dataframe = pd.concat(state_dataframe_list, axis=0, ignore_index=True)
+    """
+This function filters rows from a DataFrame based on the presence of certain keywords in the 'category' column.
 
-    # Merge metadata_sites DataFrame with the total_state_dataframe on 'gmap_id'
-    merged_dataframe = pd.merge(metadata_sites, total_state_dataframe, on='gmap_id', how='inner')
+Parameters:
+- file_path: Path to the parquet file containing the DataFrame to be cleaned.
+- keywords: List of keywords to filter rows based on their presence in the 'category' column.
 
-    # Return the merged DataFrame
-    return merged_dataframe   
+Returns:
+- DataFrame: A new DataFrame containing rows where the 'category' column contains any of the specified keywords.
+"""
+    # Read the DataFrame from the parquet file
+    df_sitios = pd.read_parquet(file_path)
+
+    # List to store indices of rows to be filtered
+    filas_a_filtrar = []
+
+    # Iterate over each row in the DataFrame
+    for row in df_sitios.itertuples():
+        category = row.category
+        index = row.Index
+    
+        # Check if 'category' is not None
+        if category is not None:
+            # Iterate over each keyword
+            for key in keywords:
+                # Check if any keyword is in the 'category' list
+                if any(key in item for item in category):
+                    filas_a_filtrar.append(index)
+
+    # Create a new DataFrame with the filtered rows
+    df_filtrado = df_sitios.loc[df_sitios.index.isin(filas_a_filtrar)]
+    df_filtrado.reset_index(drop=True, inplace=True)
+
+    return df_filtrado
+
 
 
 def drop_columns(dataframe, columns_to_drop):
@@ -508,35 +533,35 @@ def group_column(dataframe, column_name):
 
 def get_city(latitude, longitude, api_key):
     """
-    Function to get the city name using reverse geocoding from Bing Maps API.
+    Function to get the city name using reverse geocoding from Google Maps API.
 
     Parameters:
     - latitude: Latitude of the location.
     - longitude: Longitude of the location.
-    - api_key: API key for Bing Maps API.
+    - api_key: API key for Google Maps API.
 
     Returns:
     - City name corresponding to the given latitude and longitude.
     """
-    # Base URL of Bing Maps reverse geocoding API
-    base_url = f'http://dev.virtualearth.net/REST/v1/Locations/{latitude},{longitude}'
+    # Base URL of Google Maps reverse geocoding API
+    base_url = f'https://maps.googleapis.com/maps/api/geocode/json'
 
     # Parameters for the request
     params = {
-        'includeNeighborhood': 1,
+        'latlng': f'{latitude},{longitude}',
         'key': api_key
     }
 
-    # Make request to Bing Maps reverse geocoding API
+    # Make request to Google Maps reverse geocoding API
     response = requests.get(base_url, params=params)
     data = response.json()
 
     # Extract city name from the response
-    if 'resourceSets' in data and len(data['resourceSets']) > 0 and 'resources' in data['resourceSets'][0] and len(data['resourceSets'][0]['resources']) > 0:
-        city = data['resourceSets'][0]['resources'][0]['address'].get('locality', '')
-        return city
-    else:
-        return None
+    if 'results' in data and len(data['results']) > 0:
+        for component in data['results'][0]['address_components']:
+            if 'locality' in component['types']:
+                return component['long_name']
+    return None
 
 def city_dataframe(df1, file_location, api_key):
     """
