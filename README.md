@@ -27,7 +27,7 @@ To do this, it provides data from the Yelp and Google Maps platforms, through a 
 | Folder/File              | Description                                                                                  |
 | ------------------------ | -------------------------------------------------------------------------------------------- |
 | **/data**                | Folder that stores datasets and files used by the Analysis,  Dashboard and ML models.                              |
-| **/Preliminary Work**    | Folder containing Jupyter notebooks used for Preliminary ETL and Preliminary EDA process |
+| **/Notebooks**           | Folder containing Jupyter notebooks used for ETL, EDA and feature engineering processes |
 | **/Images**              | Folder containing relevant and illustrative images for the analysis project. |
 | **/Docs**              | Folder containing LaTex and PDF files (in English and Spanish) with the documentation carried out during each stage of the project, as well as a report with the final analysis and the project conclusions report.|
 | **gitignore**            | File specifying folders and files to be ignored by version control (git).                      |
