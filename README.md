@@ -88,4 +88,4 @@ The Data Warehouse has a snowflake schema where the Business fact table is used 
 - The relational model was automatized to work with in Data Warehouse
 
 ## Pipeline
-Am autimatized pipline of data was created and executed to run the projecto from data base provided by costumer to Data Warehouse
+An autimatized pipline of data was created and executed to run the projecto from data base provided by costumer to Data Warehouse
