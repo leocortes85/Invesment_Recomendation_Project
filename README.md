@@ -19,7 +19,7 @@
 </p>
 
 ## Project Description
-A client has hired the services of ARCOL Data Solutions and has requested that a complete analysis be carried out on the tourism business market in the United States and to create an App that presents a recommendation model with the purpose that interested potential investors have valuable information that allows them to make decisions about investing or not, according to their needs.
+A costumer has hired the services of ARCOL Data Solutions and has requested that a complete analysis be carried out on the tourism business market in the United States and to create an App that presents a recommendation model with the purpose that interested potential investors have valuable information that allows them to make decisions about investing or not, according to their needs.
 To do this, it provides data from the Yelp and Google Maps platforms, through a folder in the Google Drive cloud that it shares with the company.
 
 ## Project Structure
@@ -89,3 +89,32 @@ The Data Warehouse has a snowflake schema where the Business fact table is used 
 
 ## Pipeline
 An autimatized pipline of data was created and executed to run the projecto from data base provided by costumer to Data Warehouse
+
+## Data Analysis Process
+
+From the Data Warehouse, we extract clean and structured data to perform data analysis and data science processes.
+
+For the Data Analysis process, we take the dimensional tables and create a semantic model that relates the tables to each other to perform specific analysis in an interactive Dashboard.
+
+<p align="center">
+  <img src="Images/Analysis.png">
+</p>
+
+<p align="center">
+  <img src="Images/KPI.png">
+</p>
+
+
+## Machine Learning Process
+
+Likewise, we use structured data to perform the Machine Learning process, where three functions are proposed to obtain the desired results. These functions take one or two arguments provided by the user according to their interest (State, Category) to choose from a series of recommended businesses with their respective information.
+
+<p align="center">
+  <img src="Images/ML.png">
+</p>
+
+## Deployment and Final Product
+
+Finally, the necessary process was carried out to deliver a final product installed on a website, where the user can find all the corresponding information about ARCOL Data Solutions and, of course, the interactive dashboard and the model that will recommend businesses tailored to their interests.
+
+This product can be viewed [HERE](https://arcolsolutions.streamlit.app/)
