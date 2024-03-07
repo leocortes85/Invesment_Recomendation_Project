@@ -6,6 +6,8 @@ import pyarrow as pa
 import io
 import requests
 from datetime import datetime
+from geopy.distance import geodesic
+from textblob import TextBlob
 # Warnings ignore
 import warnings
 warnings.filterwarnings("ignore")
@@ -591,4 +593,230 @@ def city_dataframe(df1, file_location, api_key):
         df_city.to_parquet(file_location)
     
     return df_city
+
+
+def get_state(latitude, longitude, api_key):
+    """
+    Function to get the state name using reverse geocoding from Google Maps API.
+
+    Parameters:
+    - latitude: Latitude of the location.
+    - longitude: Longitude of the location.
+    - api_key: API key for Google Maps API.
+
+    Returns:
+    - State name corresponding to the given latitude and longitude.
+    """
+    # Base URL of Google Maps reverse geocoding API
+    base_url = f'https://maps.googleapis.com/maps/api/geocode/json'
+
+    # Parameters for the request
+    params = {
+        'latlng': f'{latitude},{longitude}',
+        'key': api_key
+    }
+
+    # Make request to Google Maps reverse geocoding API
+    response = requests.get(base_url, params=params)
+    data = response.json()
+
+    # Extract state name from the response
+    state_name = None
+    if 'results' in data and len(data['results']) > 0:
+        for component in data['results'][0]['address_components']:
+            if 'administrative_area_level_1' in component['types']:
+                state_name = component['long_name']
+                break
+    return state_name
+
+def state_dataframe(df1, file_location, api_key):
+    """
+    Function to load or create the state DataFrame.
+
+    If the specified file exists, load the DataFrame from the file.
+    Otherwise, execute the get_state function to obtain the DataFrame and save it to the specified file.
+
+    Parameters:
+    - df1: DataFrame containing the data.
+    - file_location: Location of the file to load or save.
+    - api_key: API key for Google Maps API.
+
+    Returns:
+    - DataFrame containing state information.
+    """
+    # Check if the specified file exists
+    if os.path.exists(file_location):
+        # If exists, load the DataFrame from the Parquet file
+        df_state = pd.read_parquet(file_location)
+    else:
+        # If not exists, execute get_state function to obtain the DataFrame
+        df_state = df1.copy()  # Copy the original DataFrame
+        df_state['State'] = df_state.apply(lambda row: get_state(row['latitude'], row['longitude'], api_key), axis=1)
+        
+        # Save the DataFrame to the specified file
+        df_state.to_parquet(file_location)
+    
+    return df_state   
+
+
+
+def sentiment_analysis(file_path, df):
+    """
+    Perform sentiment analysis on the text data in the given DataFrame.
+    If the file specified by file_path exists, read it and return a DataFrame called 'total_sa'.
+    If the file does not exist, apply sentiment analysis to the provided DataFrame and save the result as a parquet file.
+
+    Args:
+    file_path (str): Path to the file.
+    df (pd.DataFrame): DataFrame containing the text data.
+
+    Returns:
+    pd.DataFrame: DataFrame containing the sentiment analysis results.
+    """
+
+    # Check if file exists
+    if os.path.exists(file_path):
+        # Read the file
+        total_sa = pd.read_parquet(file_path)
+    else:
+        # Apply sentiment analysis
+        df['Sentiment_Analysis'] = df['Text'].apply(lambda x: TextBlob(str(x)).sentiment.polarity if pd.notna(x) and x != 'No data' else None)
+
+        # Define a function to map sentiment scores
+        def map_sentiment(score):
+            if score is None:
+                return 1  # If the review is absent or 'No data', take the value of 1
+            elif score < 0:
+                return 0  # bad
+            elif score == 0:
+                return 1  # neutral
+            else:
+                return 2  # positive
+
+        # Apply mapping function to 'Sentiment_Analysis' column
+        df['Sentiment_Analysis'] = df['Sentiment_Analysis'].apply(map_sentiment)
+
+        # Save DataFrame as parquet file
+        df.to_parquet(file_path)
+        total_sa = df
+
+    return total_sa
+
+def divide_by_state(df, state_column='State'):
+    """
+    This function divides a DataFrame into multiple DataFrames based on the unique values
+    in the specified state column.
+
+    Parameters:
+        df (DataFrame): The DataFrame to be divided.
+        state_column (str): The name of the column containing state information.
+
+    Returns:
+        dict: A dictionary where keys are unique states and values are DataFrames corresponding
+        to each state.
+    """
+    # Get the unique values of the state column
+    states = df[state_column].unique()
+    
+    # Create a dictionary to store DataFrames divided by state
+    dataframes_by_state = {}
+    
+    # Iterate over each unique state
+    for state in states:
+        # Filter the DataFrame by the current state
+        df_state = df[df[state_column] == state].copy()
+        
+        # Select the required columns
+        required_columns = ['Business_Name', 'Latitude', 'Longitude', 'Category']
+        df_state = df_state[required_columns]
+        
+        # Add the DataFrame to the dictionary, with the name corresponding to the state
+        dataframes_by_state[state] = df_state
+        
+        # Print a message indicating that the DataFrame for the current state was generated successfully
+        print(f"{state} DataFrame was generated successfully.")
+    
+    return dataframes_by_state
+
+
+    
+
+def calculate_distances(df):
+    """
+    This function calculates the minimum distances from each non-touristic business to the nearest
+    touristic business and stores the result in a DataFrame.
+
+    Parameters:
+        df (DataFrame): The DataFrame containing business data.
+
+    Returns:
+        DataFrame: The original DataFrame with additional columns for minimum distance,
+        closest touristic business, and its category.
+    """
+    # Touristic categories
+    tourist_categories = ['Museum', "Shopping mall", 'Roller coaster', 'Park', 'National forest', 'Art gallery', 'Zoo']
+    
+    # Create new columns to store minimum distance and the name of the closest touristic business
+    df['Distance'] = None  # Initialize with None
+    df['Closest_Touristic_Business'] = ''
+    df['Tourism_Cat'] = ''
+    
+    # Filter businesses by touristic categories
+    tourist_businesses = df[df['Category'].isin(tourist_categories)]
+    other_businesses = df[~df['Category'].isin(tourist_categories)]
+    
+    # Iterate over each non-touristic business
+    for index_other, other_business in other_businesses.iterrows():
+        # Initialize minimum distance as infinity
+        min_distance = float('inf')
+        closest_business_name = ''
+        tourism_category = ''
+        
+        # Iterate over each touristic business
+        for index_tourist, tourist_business in tourist_businesses.iterrows():
+            # Calculate geodesic distance between businesses
+            distance = geodesic((other_business['Latitude'], other_business['Longitude']), 
+                                 (tourist_business['Latitude'], tourist_business['Longitude'])).kilometers
+            
+            # If the distance is less than the minimum found so far for this non-touristic business,
+            # update the minimum distance, the name of the closest touristic business, and its category
+            if distance < min_distance:
+                min_distance = distance
+                closest_business_name = tourist_business['Business_Name']
+                tourism_category = tourist_business['Category']
+        
+        # Assign the minimum distance, the name of the closest touristic business, and its category to the current non-touristic business
+        df.at[index_other, 'Distance'] = min_distance
+        df.at[index_other, 'Closest_Touristic_Business'] = closest_business_name if min_distance != float('inf') else 'itself'
+        df.at[index_other, 'Tourism_Cat'] = tourism_category
+    
+    return df
+
+
+def distances(file_location, df):
+    """
+    This function loads a DataFrame from a file if the file exists at the specified location,
+    otherwise, it applies the calculate_distances function to the DataFrame and saves the result
+    to the file location.
+
+    Parameters:
+        file_location (str): The location of the file to load or save.
+        df (DataFrame): The DataFrame to process.
+
+    Returns:
+        DataFrame: The DataFrame loaded from the file or the result of calculate_distances function.
+    """
+    # Check if the file exists at the specified location
+    if os.path.exists(file_location):
+        # Load the DataFrame from the file
+        df_state = pd.read_parquet(file_location)
+        print(f"Dataframe {df} was successfully loaded from {file_location}")
+    else:
+        # Apply the calculate_distances function if the file does not exist
+        df_state = calculate_distances(df)
+        # Save the resulting DataFrame to the specified location
+        df_state.to_parquet(file_location)
+        print(f"Dataframe {df} was successfully generated and saved to {file_location}")
+    
+    return df_state
 
