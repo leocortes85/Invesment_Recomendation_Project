@@ -115,6 +115,9 @@ Likewise, we use structured data to perform the Machine Learning process, where 
 
 ## Deployment and Final Product
 
-Finally, the necessary process was carried out to deliver a final product installed on a website, where the user can find all the corresponding information about ARCOL Data Solutions and, of course, the interactive dashboard and the model that will recommend businesses tailored to their interests.
+Finally, the necessary process was carried out to deliver a final product installed on a website with Streamlit tool, where the user can find all the corresponding information about ARCOL Data Solutions and, of course, the interactive dashboard and the model that will recommend businesses tailored to their interests.
+
+
+This README provides an overview of the Invesment Recomendation project, highlighting key processes and outcomes. For detailed information on implementation, refer to the documentation and source code on the GitHub repository. You can also access the API and explore the documentation at the API link.
 
 This product can be viewed [HERE](https://arcolsolutions.streamlit.app/)
