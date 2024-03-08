@@ -94,7 +94,12 @@ El Data Warehouse tiene un esquema de copo de nieve donde la tabla de hechos del
 ## Pipeline
 Se creó y ejecutó un pipeline automatizado de datos para ejecutar el proyecto desde la base de datos proporcionada por el cliente hasta el Data Warehouse.
 
-[Pipeline](Images/Pipeline.mp4)
+<p align="center">
+  <video width="640" height="360" controls>
+    <source src="Images/Pipeline.mp4" type="video/mp4">
+    Tu navegador no soporta la etiqueta de vídeo.
+  </video>
+</p>
 
 ## Proceso de Análisis de Datos
 

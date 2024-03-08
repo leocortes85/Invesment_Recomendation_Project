@@ -59,8 +59,6 @@ Additionally, a preliminary analysis of the quality of the data contained in the
 
 ## Technology Stack
 
-## Stack Tecnológico
-
 <p align="center">
   <img src="Images/Tech_Stack.png">
 </p>
@@ -98,7 +96,12 @@ The Data Warehouse has a snowflake schema where the Business fact table is used 
 ## Pipeline
 An autimatized pipline of data was created and executed to run the projecto from data base provided by costumer to Data Warehouse
 
-[Pipeline](Images/Pipeline.mp4)
+<p align="center">
+  <video width="640" height="360" controls>
+    <source src="Images/Pipeline.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+</p>
 
 ## Data Analysis Process
 
