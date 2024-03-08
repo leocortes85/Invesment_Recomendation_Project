@@ -56,6 +56,15 @@ As preliminary work, business data that exists on Google Maps and Yelp is loaded
 In order to optimize the size of the files and the use of resources when working with the data, a change to parquet format is made, optimizing the use of resources by 69%.
 Additionally, a preliminary analysis of the quality of the data contained in the files is carried out.
 
+
+## Technology Stack
+
+## Stack Tecnológico
+
+<p align="center">
+  <img src="Images/Tech_Stack.png">
+</p>
+
 ## Technology FLow
 
 <p align="center">
@@ -68,7 +77,6 @@ The Data Warehouse has a snowflake schema where the Business fact table is used 
 <p align="center">
   <img src="Images/DER.png">
 </p>
-
 
 
 ## Transformations
@@ -89,6 +97,8 @@ The Data Warehouse has a snowflake schema where the Business fact table is used 
 
 ## Pipeline
 An autimatized pipline of data was created and executed to run the projecto from data base provided by costumer to Data Warehouse
+
+[Pipeline](Images/Pipeline.mp4)
 
 ## Data Analysis Process
 

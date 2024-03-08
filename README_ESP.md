@@ -56,6 +56,12 @@ Como trabajo preliminar, se carga los datos empresariales existentes en Google M
 Con el fin de optimizar el tamaño de los archivos y el uso de recursos al trabajar con los datos, se realiza un cambio al formato parquet, optimizando el uso de recursos en un 69%.
 Adicionalmente, se lleva a cabo un análisis preliminar de la calidad de los datos contenidos en los archivos.
 
+## Stack Tecnológico
+
+<p align="center">
+  <img src="Images/Tech_Stack.png">
+</p>
+
 ## Flujo de Tecnología
 
 <p align="center">
@@ -87,6 +93,8 @@ El Data Warehouse tiene un esquema de copo de nieve donde la tabla de hechos del
 
 ## Pipeline
 Se creó y ejecutó un pipeline automatizado de datos para ejecutar el proyecto desde la base de datos proporcionada por el cliente hasta el Data Warehouse.
+
+[Pipeline](Images/Pipeline.mp4)
 
 ## Proceso de Análisis de Datos
 
