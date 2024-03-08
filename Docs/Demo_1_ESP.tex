@@ -158,8 +158,8 @@ La designación de responsabilidades para cada tarea y fase implica asignar role
     \item \includegraphics[height=1em]{Scikit_learn_logo.png}
     \textbf{Scikit Learn:} Scikit Learn es una biblioteca de aprendizaje automático (machine learning) para el lenguaje de programación Python. Se utiliza para desarrollar y aplicar algoritmos de aprendizaje automático de manera eficiente y sencilla. ES la librería que utilizaremos para trabajar durante la etapa de procesamiento de datos y machine learning, para realizar la mayoría de los modelos propuestos en nuestros proyectos, debido a la amplia gama de algoritmos de aprendizaje supervisado y no supervisado, así como herramientas para el preprocesamiento de datos.
 
-    \item \includegraphics[height=1em]{fastapi.png}
-    \textbf{Fast API:} FastAPI es un marco (framework) web para construir APIs (interfaces de programación de aplicaciones) en Python de manera rápida y eficiente, del que se destacan su alta velocidad, facilidad de uso y su capacidad para generar automáticamente documentación interactiva (Swagger UI y ReDoc) para las APIs que se construyen con él. Por esta razón, es la herramienta que en ARCOL se ha seleccionado para realizar durante la fase de desarrollo de machine learning,  los deploy de los modelos y funciones trabajadas previamente durante el procesamiento de datos.
+    \item \includegraphics[height=1em]{streamlit.png}
+    \textbf{Streamlit:} Streamlit es una biblioteca de Python  que permite crear aplicaciones web interactivas para el análisis de datos y la visualización de manera rápida y sencilla. Con Streamlit, se puede convertir scripts de Python en aplicaciones web interactivas. Ofrece una amplia gama de widgets para la entrada de datos, gráficos interactivos y capacidades de visualización, lo que la convierte en una herramienta poderosa para la creación rápida de prototipos y la implementación de aplicaciones de análisis y ciencia de datos.
 
     \item \includegraphics[height=1em]{Jira.png}
     \textbf{Jira:} Jira es una aplicación de software que se utiliza principalmente para la gestión de proyectos y seguimiento de problemas. EN nuestro caso, Jira será utilizada para planificar, rastrear y gestionarlas tareas propuestas por y para el trabajo en equipo.
@@ -191,16 +191,16 @@ Formulamos un conjunto de indicadores diseñados para proporcionar una evaluaci�
     
     \textit{Objetivo:} Evaluar la satisfacción general de los clientes en comparación con el año anterior. Mayor ISC indica mayor satisfacción, lo que puede ser atractivo para inversionistas.
 
-     \item \textbf{Calidad de Servicio (QS) por Ubicación:}
+     \item \textbf{Índice de malas experiencias IME:}
      
     \textit{Fórmula:} Sean: 
     
-    $x$ = Promedio de calificaciones de usuarios por ubicación.
+    $x$ = Número de reviews negativos.
     
-    $y$ = Máxima calificación posible 
-    $$QS = \frac{x}{y}\times 100$$
+    $y$ = Cantidad total de reviews 
+    $$IME = \frac{x}{y}\times 100$$
     
-    \textit{Objetivo:} Evaluar semestralmente la calidad del servicio en ubicaciones específicas. Proporciona información detallada sobre el rendimiento en diferentes áreas geográficas.
+    \textit{Objetivo:} Evaluar anualmente la calidad del servicio en ubicaciones específicas. Proporciona información detallada sobre el rendimiento en diferentes áreas geográficas.
 
     \item \textbf{Índice de Reputación Online (IRO):}
     
@@ -211,29 +211,18 @@ Formulamos un conjunto de indicadores diseñados para proporcionar una evaluaci�
     $y$ = Número total de reviews 
     $$ IRO = \frac{x}{y}\times 100$$
         
-    \textit{Objetivo:} Medir la reputación online del negocio cada trimestre. Una alta proporción de reviews positivos puede ser atractiva para inversionistas.
+    \textit{Objetivo:} Medir la reputación online del negocio cada año. Una alta proporción de reviews positivos puede ser atractiva para inversionistas.
 
-    \item \textbf{Ubicación Estratégica (UE):}
+    \item \textbf{Medición de Ckeckin (CM):}
     
     \textit{Fórmula:} Sean:
 
-    $x$ = Número de atracciones turísticas cercanas.
+    $x$ = Cantidad total de Checkins.
     
-    $y$ = Distancia promedio a atracciones 
-    $$ UE = \frac{x}{y}$$
+    $y$ = 1,1  
+    $$ CM = x\times y$$
     
-    \textit{Objetivo:} Evaluar en periodos anuales la ubicación en relación con las atracciones turísticas. Una mayor puntuación indica una ubicación estratégica que puede atraer a más visitantes.
-
-    \item \textbf{Ubicación con Potencial de Crecimiento (UPC):}
-    
-    \textit{Fórmula:} Sean:
-
-    $x$ = Promedio de calificaciones de usuarios en áreas en desarrollo.
-    
-    $y$ = Promedio de calificaciones de usuarios en áreas consolidadas
-    $$ UPC = \frac{x}{y}\times 100$$
-    
-    \textit{Objetivo:} Identificar año a año negocios que están ubicados y/o se expanden a áreas con potencial de crecimiento. Una mayor puntuación indica oportunidades para inversión en expansión.
+    \textit{Objetivo:} Mejorar cada año en un 10\% la cantidad de Checkins.
     
 \end{enumerate}
 
