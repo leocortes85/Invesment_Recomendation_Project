@@ -30,8 +30,10 @@ To do this, it provides data from the Yelp and Google Maps platforms, through a 
 | **/Notebooks**           | Folder containing Jupyter notebooks used for ETL, EDA and feature engineering processes |
 | **/Images**              | Folder containing relevant and illustrative images for the analysis project. |
 | **/Docs**              | Folder containing LaTex and PDF files (in English and Spanish) with the documentation carried out during each stage of the project, as well as a report with the final analysis and the project conclusions report.|
+| **requirements.txt**     | File listing dependencies and libraries required to run the project.                           |
 | **gitignore**            | File specifying folders and files to be ignored by version control (git).                      |
 | **LICENSE**              | MIT LICENSE - File specifying the terms under which the source code is shared.                 |
+| **main.py**              | Main Python file serving as an entry point for the application, defining Model configuration and execution|
 | **README.md**            | Main project documentation in English.                                                         |
 | **README_ESP.md**        | Main project documentation in Spanish.                                                         |
 
@@ -130,7 +132,16 @@ Likewise, we use structured data to perform the Machine Learning process, where 
 
 Finally, the necessary process was carried out to deliver a final product installed on a website with Streamlit tool, where the user can find all the corresponding information about ARCOL Data Solutions and, of course, the interactive dashboard and the model that will recommend businesses tailored to their interests.
 
+The final product can be viewed [HERE](https://arcolsolutions.streamlit.app/)
 
-This README provides an overview of the Invesment Recomendation project, highlighting key processes and outcomes. For detailed information on implementation, refer to the documentation and source code on the GitHub repository. You can also access the API and explore the documentation at the API link.
+## Improvement opportunities
 
-This product can be viewed [HERE](https://arcolsolutions.streamlit.app/)
+Some improvement opportunities identified in this project, which are planned as future work, are:
+
+- Create a loop through a link to the recommendations given by the ML model created, so that the user can also obtain information about each of the recommended businesses, beyond the one chosen by them.
+- Carry out a greater analysis with each KPI, showing not only the measurement result but also the information relevant to each KPI.
+- Add more relevant information about the business (photographs, sales, etc.) to give a better decision tool to an investor
+
+## Dislcaimer
+
+This README provides an overview of the Invesment Recomendation project, highlighting key processes and outcomes. For detailed information on implementation, refer to the documentation and source code on the GitHub repository. You can also access the API and explore the documentation at the Product model link.

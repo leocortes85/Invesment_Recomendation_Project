@@ -30,8 +30,10 @@ Para ello, proporciona datos de las plataformas Yelp y Google Maps, a través de
 | **/Notebooks**           | Carpeta que contiene notebooks de Jupyter utilizados para procesos de ETL, EDA y ingeniería de características |
 | **/Images**              | Carpeta que contiene imágenes relevantes e ilustrativas para el proyecto de análisis. |
 | **/Docs**              | Carpeta que contiene archivos LaTex y PDF (en inglés y español) con la documentación realizada durante cada etapa del proyecto, así como un informe con el análisis final y el informe de conclusiones del proyecto.|
+| **requirements.txt**           | Archivo que lista las dependencias y bibliotecas necesarias para ejecutar el proyecto. |
 | **gitignore**            | Archivo que especifica carpetas y archivos a ignorar por el control de versiones (git).                      |
 | **LICENSE**              | MIT LICENSE - Archivo que especifica los términos bajo los cuales se comparte el código fuente.                 |
+| **main.py**                    | Archivo Python principal que sirve como punto de entrada para la aplicación y define la configuración y ejecución del modelo ML. |
 | **README.md**            | Documentación principal del proyecto en inglés.                                                         |
 | **README_ESP.md**        | Documentación principal del proyecto en español.                                                         |
 
@@ -129,6 +131,17 @@ Del mismo modo, utilizamos datos estructurados para realizar el proceso de Machi
 Finalmente, se llevó a cabo el proceso necesario para entregar un producto final instalado en un sitio web con la herramienta Streamlit, donde el usuario puede encontrar toda la información correspondiente sobre ARCOL Data Solutions y, por supuesto, el panel interactivo y el modelo que recomendará negocios adaptados a sus intereses.
 
 
-Este README proporciona una visión general del proyecto de Recomendación de Inversiones, destacando procesos y resultados clave. Para obtener información detallada sobre la implementación, consulte la documentación y el código fuente en el repositorio de GitHub. También puede acceder a la API y explorar la documentación en el enlace de la API.
+El producto final se puede ver [AQUÍ](https://arcolsolutions.streamlit.app/)
 
-Este producto se puede ver [AQUÍ](https://arcolsolutions.streamlit.app/)
+
+## Oportunidades de mejora
+
+Algunas oportunidades de mejora identificadas en este proyecto, que se tienen planteadas como trabajo a futuro son:
+
+- Realizar un bucle por medio de un enlace a las recomendaciones dadas por el modelo de ML realizado, para que el usuario pueda obtener la información tambien de cada uno de los negocios recomendados, mas allá del escogido por él mismo.
+- Realizar un análisis mayor con cada KPI, donde se muestre no solo el resultado de la medición sino la información relevante a cada KPI.
+- Agregar mayor información relevante del negocio (fotografias, ventas, etc) para dar una mejor herramienta de desición a un inversionista
+
+## Dislcaimer
+
+Este README proporciona una visión general del proyecto de Recomendación de Inversiones, destacando procesos y resultados clave. Para obtener información detallada sobre la implementación, consulte la documentación y el código fuente en el repositorio de GitHub. También puede acceder a la API y explorar la documentación en el enlace del producto final.
