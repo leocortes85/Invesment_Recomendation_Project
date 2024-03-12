@@ -50,7 +50,7 @@ Para ello, proporciona datos de las plataformas Yelp y Google Maps, a través de
 | **Leonardo Cortés**      | Project Manager (PM) y Data Scientist    |[leocortes85](https://github.com/leocortes85/)  |[Leonardo Cortés Zambrano](https://www.linkedin.com/in/leonardo-cort%C3%A9s-zambrano/)
 | **Marcelo Atencio**      | Task Manager y Data Engineer             |[MarceloAtencio](https://github.com/MarceloAtencio/) |[Marcelo Atencio](https://www.linkedin.com/in/marcelo-atencio/)
 | **Federico López**       | Analista de Datos y Narrador de Historias de Datos.       |[alopezfederico](https://github.com/alopezfederico/) |[Federico Antonio López](https://www.linkedin.com/in/federico-a-lopez/)  |
-| **Andrés Ruiz**          | Ingeniero de Datos e Ingeniero de ML     |[a1ternocles](https://github.com/alopezfederico/) |[Andrés Ruiz](https://www.linkedin.com/in/andresruiz94/) |
+| **Andrés Ruiz**          | Ingeniero de Datos e Ingeniero de ML     |[a1ternocles](https://github.com/a1ternocles) |[Andrés Ruiz](https://www.linkedin.com/in/andresruiz94/) |
 
 ## Trabajo Preliminar
 
